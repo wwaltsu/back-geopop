@@ -16,6 +16,12 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
     marker: "String",
     gif: "String",
     pos: [ "number", "number"],
+    sender_id: "number",
+    createAt: {
+      type: Date,
+      default: Date.now(),
+      index: { expires: 30*1 }
+  }
   })
 
 postSchema.set('toJSON', {
@@ -25,5 +31,8 @@ postSchema.set('toJSON', {
     delete returnedObject.__v
   }
 })
+
+
+
 
 module.exports = mongoose.model('Post', postSchema)
