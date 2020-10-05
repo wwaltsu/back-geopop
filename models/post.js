@@ -17,12 +17,14 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
     gif: "String",
     pos: [ "number", "number"],
     sender_id: "number",
-    createAt: {
+    createdAt: {
       type: Date,
       default: Date.now(),
-      index: { expires: 30*1 }
-  }
+    }
   })
+
+  postSchema.index( { "createdAt": 1 }, { expireAfterSeconds: 3600} )
+  
 
 postSchema.set('toJSON', {
   transform: (document, returnedObject) => {

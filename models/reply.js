@@ -12,9 +12,14 @@ const replySchema = new mongoose.Schema({
     marker: "String",
     receiver_id: "number",
     sender_id: "number",
-    
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+    }
   })
-  
+
+  replySchema.index( { "createdAt": 1 }, { expireAfterSeconds: 3600} )
+    
   replySchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()

@@ -78,7 +78,6 @@ app.put('/api/replies/:id', (request, response, next) => {
       pos: body.pos,
       text: body.text,
       sender_id: body.sender_id,
-      createAt: body.createAt,
     })
 
   post.save()
