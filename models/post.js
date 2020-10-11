@@ -12,15 +12,22 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
   })
 
   const postSchema = new mongoose.Schema({
-    label: "String",
-    marker: "String",
-    gif: "String",
+    marker: {
+      type: String,
+      required: true,
+      minlength: 3
+    },
+    gif: {
+      type: String,
+      required: true
+    },
     pos: [ "number", "number"],
     sender_id: "number",
     createdAt: {
       type: Date,
       default: Date.now(),
-    }
+    },
+    label: "String"
   })
 
   postSchema.index( { "createdAt": 1 }, { expireAfterSeconds: 3600} )

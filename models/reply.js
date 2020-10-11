@@ -5,11 +5,30 @@ const url = process.env.MONGODB_URI
 
 const replySchema = new mongoose.Schema({
  
-    title: "String",
-    alias: "String",
-    text: "String",
+    title: {
+      required: true,
+      minlength: 1,
+      type: String
+
+    },
+    alias: {
+      required: true,
+      minlength: 1,
+      type: String
+
+    },
+    text: {
+      required: true,
+      minlength: 1,
+      type: String
+
+    },
+    marker: {
+      type: String,
+      required: true,
+      minlength: 3
+    },
     pos: [ "number", "number"],
-    marker: "String",
     receiver_id: "number",
     sender_id: "number",
     createdAt: {
