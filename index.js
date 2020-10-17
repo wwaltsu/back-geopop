@@ -73,7 +73,7 @@ app.put('/api/replies/:id', (request, response, next) => {
     console.log(body)
     const post = new Post({
       gif: body.gif,
-      label: body.label || false,
+      label: body.label,
       marker: body.marker,
       pos: body.pos,
       text: body.text,

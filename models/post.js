@@ -15,7 +15,8 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
     marker: {
       type: String,
       required: true,
-      minlength: 3
+      minlength: 3,
+      enum: ['laugh','sad','fear','love','glasses','wink']
     },
     gif: {
       type: String,
@@ -27,7 +28,13 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFind
       type: Date,
       default: Date.now(),
     },
-    label: "String"
+    label: "String",
+    text: {
+      type: String,
+      minlength: 1,
+      maxlength: 40
+     
+    }
   })
 
   postSchema.index( { "createdAt": 1 }, { expireAfterSeconds: 3600} )
